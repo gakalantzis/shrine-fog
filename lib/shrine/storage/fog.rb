@@ -9,7 +9,7 @@ class Shrine
 
       def initialize(directory:, prefix: nil, public: true, expires: 3600, connection: nil, **options)
         @connection = connection || ::Fog::Storage.new(options)
-        @directory = @connection.directories.new(key: directory)
+        @directory = @connection.directories.get(key: directory)
         @prefix = prefix
         @public = public
         @expires = expires
